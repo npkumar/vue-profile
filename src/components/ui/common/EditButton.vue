@@ -30,4 +30,5 @@ export default {
 </script>
 
 <style scoped>
+@import '../../../css/ui/common/EditButton.css';
 </style>

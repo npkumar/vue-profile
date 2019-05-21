@@ -55,18 +55,5 @@ export default {
 </script>
 
 <style scoped>
-.email__image {
-  text-align: center;
-  margin-bottom: 1em;
-}
-
-.email__form {
-  display: flex;
-  justify-content: space-between;
-}
-
-.email__form__input {
-  display: flex;
-  flex-basis: 100%;
-}
+@import '../../css/ui/Email.css';
 </style>

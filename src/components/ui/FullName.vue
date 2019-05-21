@@ -41,13 +41,5 @@ export default {
 </script>
 
 <style scoped>
-.fullName {
-  display: flex;
-  justify-content: space-between;
-}
-
-.fullName__input {
-  display: flex;
-  flex-basis: 100%;
-}
+@import '../../css/ui/FullName.css';
 </style>

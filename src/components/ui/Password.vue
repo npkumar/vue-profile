@@ -69,41 +69,5 @@ export default {
 </script>
 
 <style scoped>
-.password {
-  display: flex;
-  flex-direction: column;
-}
-
-.password__input {
-  display: flex;
-  justify-content: space-between;
-}
-
-.password__input__form {
-  flex-basis: 100%;
-  margin-right: 0.1em;
-}
-
-.password__input__form__items {
-  display: flex;
-}
-
-.password__meter {
-  display: flex;
-  margin-top: 0.5em;
-}
-
-.password__meter__item--red {
-  background: tomato;
-  width: 60px;
-  height: 5px;
-  margin-right: 0.2em;
-}
-
-.password__meter__item--green {
-  background: green;
-  width: 60px;
-  height: 5px;
-  margin-right: 0.2em;
-}
+@import '../../css/ui/Password.css';
 </style>

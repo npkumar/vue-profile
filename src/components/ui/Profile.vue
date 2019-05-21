@@ -18,12 +18,5 @@ export default {
 </script>
 
 <style scoped>
-img {
-  border-radius: 100%;
-}
-
-.profile {
-  text-align: center;
-  margin-bottom: 1em;
-}
+@import '../../css/ui/Profile.css';
 </style>
