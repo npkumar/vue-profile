@@ -9,6 +9,7 @@
         <EditButton :disableButton="!isValidEmail" v-on:isEditing="handleEditButtonClick"/>
       </div>
     </div>
+    <ErrorMessage v-if="!isValidEmail" msg="Please provide a valid email"/>
   </div>
 </template>
 
@@ -16,10 +17,12 @@
 import { debounce } from 'lodash'
 import md5 from 'md5'
 import EditButton from './common/EditButton'
+import ErrorMessage from './common/ErrorMessage'
 
 export default {
   components: {
-    EditButton
+    EditButton,
+    ErrorMessage
   },
   data: () => ({
     email: 'batman@gmail.com',

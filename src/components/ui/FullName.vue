@@ -1,22 +1,27 @@
 <template>
-  <div class="fullName">
-    <div v-if="!editing">{{ fullName }}</div>
-    <div v-else class="fullName__input">
-      <input placeholder="First Name" type="text" v-model.trim="firstName">
-      <input placeholder="Last Name" type="text" v-model.trim="lastName">
+  <div>
+    <div class="fullName">
+      <div v-if="!editing">{{ fullName }}</div>
+      <div v-else class="fullName__input">
+        <input placeholder="First Name" type="text" v-model.trim="firstName">
+        <input placeholder="Last Name" type="text" v-model.trim="lastName">
+      </div>
+      <div>
+        <EditButton :disableButton="!isValidFullName" v-on:isEditing="handleEditButtonClick"/>
+      </div>
     </div>
-    <div>
-      <EditButton :disableButton="!isValidFullName" v-on:isEditing="handleEditButtonClick"/>
-    </div>
+    <ErrorMessage v-if="!isValidFullName" msg="Provide valid firstname and lastname"/>
   </div>
 </template>
 
 <script>
 import EditButton from './common/EditButton'
+import ErrorMessage from './common/ErrorMessage'
 
 export default {
   components: {
-    EditButton
+    EditButton,
+    ErrorMessage
   },
   data: () => ({
     firstName: 'Bruce',

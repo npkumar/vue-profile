@@ -21,16 +21,19 @@
         :class="[score === 1 ? passwordMeterRedClass : passwordMeterGreenClass ]"
       ></div>
     </div>
+    <ErrorMessage v-if="!isValidPassword" msg="Provide provide a strong password"/>
   </div>
 </template>
 
 <script>
 import zxcvbn from 'zxcvbn'
 import EditButton from './common/EditButton'
+import ErrorMessage from './common/ErrorMessage'
 
 export default {
   components: {
-    EditButton
+    EditButton,
+    ErrorMessage
   },
   data: () => ({
     password: 'BatmanIsAwesome',
