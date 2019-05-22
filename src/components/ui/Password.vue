@@ -6,7 +6,7 @@
         <div v-else class="password__input__form__items">
           <input :type="type" v-model.trim="password">
           <button v-if="editing" @click.prevent="handleUnmask">
-            <i :class="[unmask ? maskClass : unmaskClass]"></i>
+            <i :class="[unmask ? unmaskClass : maskClass]"></i>
           </button>
         </div>
       </div>

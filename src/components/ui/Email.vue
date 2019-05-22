@@ -6,7 +6,7 @@
         <input type="text" v-model.trim="email">
       </div>
       <div>
-        <EditButton :disableButton="!isEmailValid" v-on:isEditing="handleEditButtonClick"/>
+        <EditButton :disableButton="!isValidEmail" v-on:isEditing="handleEditButtonClick"/>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@ export default {
     }
   },
   computed: {
-    isEmailValid () {
+    isValidEmail () {
       const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       const validEmail = emailRegex.test(String(this.email).toLowerCase())
       if (validEmail) {
