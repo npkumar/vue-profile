@@ -9,7 +9,11 @@
 <script>
 export default {
   props: {
-    disableButton: Boolean
+    // Disables button if true.
+    disableButton: {
+      type: Boolean,
+      required: true
+    }
   },
   data () {
     return {
@@ -19,6 +23,10 @@ export default {
     }
   },
   methods: {
+    /**
+     * Emits an event `isEditing` to parent component
+     * notifying if current status is editing or not.
+     */
     handleButtonClick () {
       this.editing = !this.editing
 

@@ -7,7 +7,11 @@
 <script>
 export default {
   props: {
-    msg: String
+    // Displays the error message.
+    msg: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>

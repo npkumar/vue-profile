@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import Password from '@/components/ui/Password'
 import EditButton from '@/components/ui/common/EditButton'
+import ErrorMessage from '@/components/ui/common/ErrorMessage'
 
 describe('Password.vue', () => {
   it('should hide input field', () => {
@@ -14,6 +15,7 @@ describe('Password.vue', () => {
     // Dictionary word gives least score.
     wrapper.setData({ password: 'apple' })
     expect(wrapper.vm.isValidPassword).toBe(false)
+    expect(wrapper.contains(ErrorMessage)).toBe(true)
   })
 
   it('should show input field on clicking edit button', () => {
@@ -38,6 +40,7 @@ describe('Password.vue', () => {
     wrapper.setData({ password: 'Complicated!@#Password' })
     expect(wrapper.find('button').attributes().disabled).toBe(undefined)
     expect(wrapper.find('[disabled]').exists()).toBe(false)
+    expect(wrapper.contains(ErrorMessage)).toBe(false)
   })
 
   it('should disable EditButton if password is not valid', () => {
@@ -45,6 +48,7 @@ describe('Password.vue', () => {
     wrapper.find('.fa-edit').trigger('click')
     wrapper.setData({ password: '' })
     expect(wrapper.find('[disabled]').exists()).toBe(true)
+    expect(wrapper.contains(ErrorMessage)).toBe(true)
   })
 
   it('should show password if view password button is clicked', () => {
@@ -68,6 +72,7 @@ describe('Password.vue', () => {
     wrapper.setData({ password: '' })
     expect(wrapper.findAll('.password__meter__item--red').length).toBe(1)
     expect(wrapper.findAll('.password__meter__item--green').length).toBe(0)
+    expect(wrapper.contains(ErrorMessage)).toBe(true)
   })
 
   it('should show five strength bars for super strong password', () => {
@@ -76,5 +81,6 @@ describe('Password.vue', () => {
     wrapper.setData({ password: 'Complica90@21#2$' })
     expect(wrapper.findAll('.password__meter__item--red').length).toBe(0)
     expect(wrapper.findAll('.password__meter__item--green').length).toBe(5)
+    expect(wrapper.contains(ErrorMessage)).toBe(false)
   })
 })

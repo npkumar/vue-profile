@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import FullName from '@/components/ui/FullName'
 import EditButton from '@/components/ui/common/EditButton'
+import ErrorMessage from '@/components/ui/common/ErrorMessage'
 
 describe('FullName.vue', () => {
   it('should hide input fields', () => {
@@ -19,6 +20,7 @@ describe('FullName.vue', () => {
     const wrapper = mount(FullName)
     wrapper.setData({ firstName: 'A', lastName: 'B' })
     expect(wrapper.vm.isValidFullName).toBe(false)
+    expect(wrapper.contains(ErrorMessage)).toBe(true)
   })
 
   it('should show input fields on clicking edit button', () => {
@@ -42,6 +44,7 @@ describe('FullName.vue', () => {
     wrapper.find('.fa-edit').trigger('click')
     wrapper.setData({ firstName: 'Valid' })
     expect(wrapper.find('button').attributes().disabled).toBe(undefined)
+    expect(wrapper.contains(ErrorMessage)).toBe(false)
   })
 
   it('should not disable EditButton if lastName is valid', () => {
@@ -49,6 +52,7 @@ describe('FullName.vue', () => {
     wrapper.find('.fa-edit').trigger('click')
     wrapper.setData({ lastName: 'Valid' })
     expect(wrapper.find('button').attributes().disabled).toBe(undefined)
+    expect(wrapper.contains(ErrorMessage)).toBe(false)
   })
 
   it('should disable EditButton if firstName is not valid', () => {
@@ -56,6 +60,7 @@ describe('FullName.vue', () => {
     wrapper.find('.fa-edit').trigger('click')
     wrapper.setData({ firstName: '' })
     expect(wrapper.find('button').attributes().disabled).toBe('disabled')
+    expect(wrapper.contains(ErrorMessage)).toBe(true)
   })
 
   it('should disable EditButton if lastName is not valid', () => {
@@ -63,5 +68,6 @@ describe('FullName.vue', () => {
     wrapper.find('.fa-edit').trigger('click')
     wrapper.setData({ lastName: '' })
     expect(wrapper.find('button').attributes().disabled).toBe('disabled')
+    expect(wrapper.contains(ErrorMessage)).toBe(true)
   })
 })

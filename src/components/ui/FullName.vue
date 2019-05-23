@@ -26,18 +26,31 @@ export default {
   data: () => ({
     firstName: 'Bruce',
     lastName: 'Wayne',
-    editing: false
+    editing: false // Keeps track if we are editing
   }),
   methods: {
-    // Triggered when `isEditing` event is emitted by the child EditButton.
+    /**
+     * Triggered when `isEditing` event is emitted by the child EditButton.
+     * @param {boolean} value True if we are currently editing.
+     */
     handleEditButtonClick (value) {
       this.editing = value
     }
   },
   computed: {
+    /**
+     * Get full name based on first and last name.
+     * @returns {string} Full name.
+     */
     fullName () {
       return `${this.firstName} ${this.lastName}`
     },
+
+    /**
+     * Check if provided first name and last name is valid.
+     * Currently a naive implementation.
+     * @returns {boolean} True, if both first and last name is valid.
+     */
     isValidFullName () {
       return this.firstName.length > 2 && this.lastName.length > 2
     }

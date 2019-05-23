@@ -37,19 +37,27 @@ export default {
   },
   data: () => ({
     password: 'BatmanIsAwesome',
-    editing: false,
-    type: 'password',
-    unmask: false,
+    editing: false, // Keeps track if we are editing
+    type: 'password', // Hide password by default
+    unmask: false, // Keeps track if we unmask password
     unmaskClass: 'far fa-eye-slash',
     maskClass: 'fas fa-eye',
     passwordMeterRedClass: 'password__meter__item--red',
     passwordMeterGreenClass: 'password__meter__item--green'
   }),
   methods: {
-    // Triggered when `isEditing` event is emitted by the child EditButton.
+    /**
+     * Triggered when `isEditing` event is emitted by the child EditButton.
+     * @param {boolean} value True if we are currently editing.
+     */
     handleEditButtonClick (value) {
       this.editing = value
     },
+
+    /**
+     * Triggered when mask or unmask button for password form is clicked.
+     * Toggles between password and text input types.
+     */
     handleUnmask () {
       // Toggle input type
       if (this.type === 'password') {
@@ -61,9 +69,18 @@ export default {
     }
   },
   computed: {
+    /**
+     * Password strength score.
+     * @returns {number} Strength score in range 1 to 5.
+     */
     score () {
       return zxcvbn(this.password).score + 1
     },
+
+    /**
+     * Check if provided password is valid.
+     * @returns {boolean} True if password strength is > 1
+     */
     isValidPassword () {
       return this.score > 1
     }

@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import Email from '@/components/ui/Email'
 import Profile from '@/components/ui/Profile'
 import EditButton from '@/components/ui/common/EditButton'
+import ErrorMessage from '@/components/ui/common/ErrorMessage'
 
 describe('Email.vue', () => {
   it('should hide input field', () => {
@@ -16,6 +17,7 @@ describe('Email.vue', () => {
     expect(wrapper.vm.isValidEmail).toBe(false)
     wrapper.setData({ email: 'batman@mandrake.com' })
     expect(wrapper.vm.isValidEmail).toBe(true)
+    expect(wrapper.contains(ErrorMessage)).toBe(false)
   })
 
   it('should show input field on clicking edit button', () => {
@@ -40,6 +42,7 @@ describe('Email.vue', () => {
     wrapper.setData({ email: 'batman@mandrake.com' })
     expect(wrapper.find('button').attributes().disabled).toBe(undefined)
     expect(wrapper.find('[disabled]').exists()).toBe(false)
+    expect(wrapper.contains(ErrorMessage)).toBe(false)
   })
 
   it('should disable EditButton if email is not valid', () => {
@@ -47,6 +50,7 @@ describe('Email.vue', () => {
     wrapper.find('.fa-edit').trigger('click')
     wrapper.setData({ email: 'batman@mandrake' })
     expect(wrapper.find('[disabled]').exists()).toBe(true)
+    expect(wrapper.contains(ErrorMessage)).toBe(true)
   })
 
   it('should update Profile component if email is valid', () => {
