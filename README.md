@@ -2,15 +2,33 @@
 
 > A Simple profile page
 
-## Build Setup
+## Usage
+<div>
+<img src="https://github.com/npkumar/revengers/blob/master/screenshots/default.png" alt="Default View" align="left" />
+<img src="https://github.com/npkumar/revengers/blob/master/screenshots/errorHandling.png" alt="Error Handling" />
+<img src="https://github.com/npkumar/revengers/blob/master/screenshots/gravatarStrengthMeter.png" alt="Gravatar and strength meter" />
+</div>
 
-``` bash
+## Run Tests
+```bash
+# install dependencies
+npm install
+# run tests
+npm test
+```
+
+## Run Development Server
+```bash
 # install dependencies
 npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
+```
 
+## Build Setup
+
+``` bash
 # build for production with minification
 npm run build
 
@@ -23,5 +41,3 @@ npm run unit
 # run all tests
 npm test
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
